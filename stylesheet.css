@@ -20,6 +20,9 @@
   margin-right: 325px;
   margin-top: 50px;
 }
+#description {
+  text-transform: capitalize;
+}
 h1 {
   font-size: 85px;
   margin-top: -20px;
@@ -33,17 +36,7 @@ button {
   text-align: left;
   margin-top: 20px;
 }
-.sun {
-  width: 100px;
-  position: relative;
-  margin-left: 420px;
-}
-.cat {
-  width: 180px;
-  position: relative;
-  margin-top: 17px;
-  margin-left: 200px;
-}
+
 .weatherNext {
   display: block;
   margin: 0 auto;
