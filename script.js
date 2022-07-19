@@ -31,19 +31,20 @@ function showCity(event) {
 let searchBox = document.querySelector("#searchBox");
 searchBox.addEventListener("submit", showCity);
 
-//Bonus point
-function logTemperature(response) {
+function showTemperature(response) {
   console.log(response.data);
-  let city = response.data.name;
   let cityDisplay = document.querySelector("#city");
-  let temp = Math.round(response.data.main.temp);
   let tempDisplay = document.querySelector("#temp");
-  let description = response.data.weather[0].description;
   let descriptionDisplay = document.querySelector("#description");
+  let iconDisplay = document.querySelector("#iconMain");
 
-  cityDisplay.innerHTML = `${city}`;
-  tempDisplay.innerHTML = `${temp}`;
-  descriptionDisplay.innerHTML = `${description}`;
+  cityDisplay.innerHTML = response.data.name;
+  tempDisplay.innerHTML = Math.round(response.data.main.temp);
+  descriptionDisplay.innerHTML = response.data.weather[0].description;
+  iconDisplay.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function showPosition(response) {
@@ -52,7 +53,7 @@ function showPosition(response) {
   let units = "metric";
   let apiKey = "e0f527090dba1e8784b184285b285cb6";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  axios.get(apiURL).then(logTemperature);
+  axios.get(apiURL).then(showTemperature);
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
