@@ -71,5 +71,14 @@ function displayFDegree(event) {
   tempDisplay.innerHTML = `${Math.round(FDegree)}°F`;
 }
 
-let fDegreeLink = document.querySelector("#changeToF");
-fDegreeLink.addEventListener("click", displayFDegree);
+let FDegreeLink = document.querySelector("#changeToF");
+FDegreeLink.addEventListener("click", displayFDegree);
+
+function displayCDegree(event) {
+  event.preventDefault();
+  let tempDisplay = document.querySelector("#temp");
+  tempDisplay.innerHTML = `${Math.round(CDegree)}°C`;
+}
+
+let CDegreeLink = document.querySelector("#changeToC");
+CDegreeLink.addEventListener("click", displayCDegree);
