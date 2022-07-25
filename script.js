@@ -82,3 +82,10 @@ function displayCDegree(event) {
 
 let CDegreeLink = document.querySelector("#changeToC");
 CDegreeLink.addEventListener("click", displayCDegree);
+
+function showCurrentPostion(event) {
+  event.preventDefault;
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+let currentLocation = document.querySelector("#currentLocation");
+currentLocation.addEventListener("click", showCurrentPostion);
