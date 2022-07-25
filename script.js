@@ -37,6 +37,7 @@ function showTemperature(response) {
   let tempDisplay = document.querySelector("#temp");
   let descriptionDisplay = document.querySelector("#description");
   let iconDisplay = document.querySelector("#iconMain");
+  let windSpeedDisplay = document.querySelector("#windspeed");
 
   cityDisplay.innerHTML = response.data.name;
   tempDisplay.innerHTML = Math.round(response.data.main.temp);
@@ -45,6 +46,7 @@ function showTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  windSpeedDisplay.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function showPosition(response) {
