@@ -39,8 +39,10 @@ function showTemperature(response) {
   let iconDisplay = document.querySelector("#iconMain");
   let windSpeedDisplay = document.querySelector("#windspeed");
 
+  CDegree = response.data.main.temp;
+
   cityDisplay.innerHTML = response.data.name;
-  tempDisplay.innerHTML = Math.round(response.data.main.temp);
+  tempDisplay.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   descriptionDisplay.innerHTML = response.data.weather[0].description;
   iconDisplay.setAttribute(
     "src",
@@ -59,3 +61,15 @@ function showPosition(response) {
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
+
+let CDegree = null;
+
+function displayFDegree(event) {
+  event.preventDefault();
+  let tempDisplay = document.querySelector("#temp");
+  let FDegree = (CDegree * 9) / 5 + 32;
+  tempDisplay.innerHTML = `${Math.round(FDegree)}°F`;
+}
+
+let fDegreeLink = document.querySelector("#changeToF");
+fDegreeLink.addEventListener("click", displayFDegree);
