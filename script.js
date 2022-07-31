@@ -89,3 +89,35 @@ function showCurrentPostion(event) {
 }
 let currentLocation = document.querySelector("#currentLocation");
 currentLocation.addEventListener("click", showCurrentPostion);
+
+function displayForecast() {
+  let forecastElelment = document.querySelector("#forecast");
+  let forecastHTML = `<div class = "row">`;
+  let days = ["Tomorrow", "Monday", "Tuesday", "Wednesday", "Thursday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col forecastDay">
+                <p class="day">${day}</p>
+                <img class="sunny" src="Scr/sunny.png" alt="sunny" />
+                <div class="forecastTemp">
+                 <span id="forecastTempMax">18°</span>
+                 <span> / </span>
+                 <span id="forecastTempMin">12°</span>
+                </div>
+              </div>
+              `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElelment.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "e0f527090dba1e8784b184285b285cb6";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
