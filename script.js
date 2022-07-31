@@ -16,9 +16,6 @@ let minute = now.getMinutes();
 
 today.innerHTML = `${day} ${hour}:${minute}`;
 
-let searchBox = document.querySelector("#searchBox");
-searchBox.addEventListener("submit", showCity);
-
 function showTemperature(response) {
   console.log(response.data);
   let cityDisplay = document.querySelector("#city");
@@ -62,6 +59,9 @@ function showCity(event) {
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
   axios.get(apiURL).then(showTemperature);
 }
+
+let searchBox = document.querySelector("#searchBox");
+searchBox.addEventListener("submit", showCity);
 
 let CDegree = null;
 
